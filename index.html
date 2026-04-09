@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login / Signup</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="auth-container">
+    <!-- Sign In -->
+    <div class="form-box" id="loginBox">
+      <h2>Sign In</h2>
+      <form id="loginForm">
+        <input type="text" id="loginUsername" placeholder="Username" aria-label="username">
+        <input type="password" id="loginPassword" placeholder="Password" aria-label="password">
+        <button type="submit">Login</button>
+      </form>
+      <p>Don't have an account? <a href="#" onclick="showSignup()">Sign Up</a></p>
+      <p id="loginError"></p>
+      <p><a href="#" id="forgotPassword">Forgot Password?</a></p>
+    </div>
+
+    <!-- Sign Up -->
+    <div class="form-box hidden" id="signupBox">
+      <h2>Sign Up</h2>
+      <form id="signupForm">
+        <input type="text" id="signupUsername" placeholder="Username">
+        <input type="email" id="signupEmail" placeholder="Email">
+        <input type="password" id="signupPassword" placeholder="Password">
+        <button type="submit">Register</button>
+      </form>
+      <p>Already have an account? <a href="#" onclick="showLogin()">Sign In</a></p>
+      <p id="signupError"></p>
+    </div>
+  </div>
+
+  <!-- Popup message -->
+  <div id="popup" class="popup hidden">
+    <p id="popupMessage"></p>
+    <button onclick="closePopup()">OK</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

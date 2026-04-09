@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Leaflet CSS (no API key required) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>My Web App</h2>
+    <ul>
+      <li><a href="#">🏠 Home</a></li>
+      <li><a href="#">👤 Profile</a></li>
+      <li><a href="#">⚙️ Settings</a></li>
+      <li><a href="#" id="aiToolBtn">🤖 AI Tool</a></li>
+      <li><a href="#" onclick="logout()">🚪 Logout</a></li>
+    </ul>
+    <div class="sidebar-controls">
+      <button id="modeToggle" aria-label="Toggle dark light">🌗 Toggle Mode</button>
+    </div>
+  </aside>
+
+  <main class="dashboard">
+    <div class="topbar">
+      <div class="topbar-left">
+        <h2 id="welcomeMessage"></h2>
+        <div class="inline-greeting">
+          <h3 id="greeting">Hello</h3>
+          <p id="nowTime" class="muted"></p>
+        </div>
+      </div>
+      <div class="topbar-right"></div>
+    </div>
+
+    <div class="cards">
+      <!-- Map Card (Leaflet, no API key) -->
+      <div class="card map-card" id="mapCard">
+        <div class="card-header"><span>Map</span></div>
+        <div class="map-body">
+            <div id="map" class="map-canvas" aria-label="Map"></div>
+        </div>
+      </div>
+      <!-- Hero Welcome Card removed (greeting shown inline after welcome message) -->
+
+      <!-- Live Feed Card -->
+      <div class="card live-feed" id="liveFeedCard">
+        <div class="card-header">
+          <span>Live Feed</span>
+          <div class="feed-controls">
+            <button id="refreshFeed">⟳</button>
+          </div>
+        </div>
+        <div id="liveFeed">
+          <div class="skeleton-list" id="feedSkeleton">
+            <div class="skeleton" style="height:18px;width:70%"></div>
+            <div class="skeleton" style="height:18px;width:50%"></div>
+            <div class="skeleton" style="height:18px;width:80%"></div>
+          </div>
+          <ul id="feedList"></ul>
+        </div>
+      </div>
+
+      <!-- (Removed Mini Calculator) -->
+
+      <!-- Weather Card -->
+      <div class="card weather-card" id="weatherCard">
+        <div class="card-header"><span>Weather</span><div class="feed-controls"><button id="refreshWeather">⟳</button></div></div>
+        <div class="weather-body" id="weatherBody">
+          <div class="weather-location" id="weatherLocation">Loading…</div>
+          <div class="weather-main">
+            <div class="weather-temp" id="weatherTemp">--°</div>
+            <div class="weather-desc" id="weatherDesc">--</div>
+          </div>
+          <div class="weather-footer muted" id="weatherUpdated">Updated: --</div>
+        </div>
+      </div>
+      <!-- AI Assistant Card -->
+      <div class="card ai-assistant hidden" id="aiAssistantCard">
+        <div class="card-header">
+          <span>AI Assistant</span>
+          <div class="feed-controls"><button id="closeAi">✕</button></div>
+        </div>
+        <div class="ai-assistant">
+          <textarea id="aiInput" placeholder="Ask the assistant a question..."></textarea>
+          <button id="aiSend">Ask</button>
+          <div id="aiResponse" class="ai-response muted"></div>
+        </div>
+      </div>
+    </div>
+    <div id="toast" class="toast hidden"></div>
+  </main>
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
